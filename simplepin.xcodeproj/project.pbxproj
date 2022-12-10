@@ -334,7 +334,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run 18b7be9fd8d6f74333326228f9b7b17beb0e6a5c 1843997cd076553a4e3df764b4d845f5f0ebee069aa40b5c31973bcde60aaefa";
+			shellScript = "./Fabric.framework/run 18b7be9fd8d6f74333326228f9b7b17beb0e6a5c 1843997cd076553a4e3df764b4d845f5f0ebee069aa40b5c31973bcde60aaefa\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -421,7 +421,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 62NCUR7FDB;
 				INFOPLIST_FILE = "Add Bookmark/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ml.simplepinkt.Add-Bookmark";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -442,7 +442,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 62NCUR7FDB;
 				INFOPLIST_FILE = "Add Bookmark/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ml.simplepinkt.Add-Bookmark";
 				PRODUCT_NAME = "$(TARGET_NAME)";
