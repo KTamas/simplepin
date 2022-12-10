@@ -252,17 +252,22 @@ class BookmarksTableViewController: UITableViewController, UISearchBarDelegate, 
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchTimer?.invalidate()
-        searchTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.logSearchQuery), userInfo: searchText, repeats: false)
+        print("This got called")
     }
 
-    @objc func logSearchQuery() {
-        if let search = searchTimer?.userInfo as? String {
-            if search.count > 2 {
-                print(search)
-            }
-        }
-    }
+    
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        searchTimer?.invalidate()
+//        searchTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.logSearchQuery), userInfo: searchText, repeats: false)
+//    }
+
+//    @objc func logSearchQuery() {
+//        if let search = searchTimer?.userInfo as? String {
+//            if search.count > 2 {
+//                print(search)
+//            }
+//        }
+//    }
 
     // MARK: - Table view
 
@@ -508,10 +513,11 @@ class BookmarksTableViewController: UITableViewController, UISearchBarDelegate, 
 
 extension BookmarksTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        
+        print("why is this empty")
     }
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
+        print("why is there two of these")
         filterContentForSearchText(searchText: searchController.searchBar.text!)
     }
 }
