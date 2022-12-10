@@ -17,14 +17,14 @@ enum WFActionExtensionError: Error {
 struct Bookmark {
     var url: NSURL
     var description: String
-    var tags: [String]
+    var tags: String
     var personal: Bool
     var toread: Bool
 
     init() {
         self.url = NSURL()
         self.description = ""
-        self.tags = []
+        self.tags = ""
         self.personal = false
         self.toread = false
     }
@@ -47,15 +47,6 @@ struct ActionView: View {
     @State private var tags: String = ""
     @State private var isPrivate: Bool = false
     @State private var isReadLater: Bool = false
-//    @State private var isShowingAlert: Bool = false
-//    @State private var selectedBlog: WFACollection?
-
-//    private var draftsCollectionName: String {
-//        guard UserDefaults.shared.string(forKey: WFDefaults.serverStringKey) == "https://write.as" else {
-//            return "Drafts"
-//        }
-//        return "Anonymous"
-//    }
 
     private var controls: some View {
             HStack {
@@ -68,7 +59,7 @@ struct ActionView: View {
                 Spacer()
                 Button(
                     action: {
-                        savePostToCollection(title: title, body: description)
+                        addBookmark(url: url, title: title, shared: isPrivate, description: description, tags: tags, toread: isReadLater)
                         extensionContext.completeRequest(returningItems: nil, completionHandler: nil)
                     },
                     label: { Image(systemName: "square.and.arrow.down").imageScale(.large) }
@@ -124,9 +115,51 @@ struct ActionView: View {
 //        }
 //    }
 
-    private func savePostToCollection(title: String, body: String) {
-        print(title)
-        print(body)
+    func addBookmark(url: String, title: String, shared: Bool, description: String = "", tags: String, toread: Bool = false) -> Void {
+        let groupDefaults = UserDefaults(suiteName: "group.ml.simplepinkt")!
+        let userToken = groupDefaults.string(forKey: "userToken")! as String
+//        let urlString = url.absoluteString
+        let shared = !shared
+
+        var urlQuery = URLComponents()
+        urlQuery.scheme = "https"
+        urlQuery.host = "api.pinboard.in"
+        urlQuery.path = "/v1/posts/add"
+        urlQuery.queryItems = [
+            URLQueryItem(name: "url", value: url),
+            URLQueryItem(name: "description", value: title),
+            URLQueryItem(name: "extended", value: description),
+            URLQueryItem(name: "tags", value: tags),
+            URLQueryItem(name: "shared", value: String(shared)),
+            URLQueryItem(name: "toread", value: String(toread)),
+            URLQueryItem(name: "auth_token", value: userToken),
+            URLQueryItem(name: "format", value: "json"),
+        ]
+
+        let task = URLSession.shared.dataTask(with: urlQuery.url!) { data, response, error in
+            if let data = data {
+                let resultCode = self.parseJSON(data: data, key: "result_code")
+                if resultCode == "200" {
+                    print("Success")
+                }
+            } else if let error = error {
+                print("HTTP Request Failed \(error)")
+            }
+        }
+
+        task.resume()
+    }
+
+    func parseJSON(data: Data, key: String) -> String? {
+        if let jsonObject = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String: AnyObject] {
+            return jsonObject["\(key)"] as? String
+        }
+        return nil
+    }
+
+//    private func savePostToCollection(title: String, body: String) {
+//        print(title)
+//        print(body)
 //        let post = WFAPost(context: managedObjectContext)
 //        post.createdDate = Date()
 //        post.title = title
@@ -146,54 +179,54 @@ struct ActionView: View {
 //            post.rtl = Locale.characterDirection(forLanguage: languageCode) == .rightToLeft
 //        }
 //        LocalStorageManager.standard.saveContext()
-    }
+//    }
 
-    private func getPageDataFromExtensionContext() throws {
-        if let inputItem = extensionContext.inputItems.first as? NSExtensionItem {
-            if let itemProvider = inputItem.attachments?.first {
-
-                let typeIdentifier: String
-
-                if #available(iOS 15, *) {
-                    typeIdentifier = UTType.propertyList.identifier
-                } else {
-                    typeIdentifier = kUTTypePropertyList as String
-                }
-
-                itemProvider.loadItem(forTypeIdentifier: typeIdentifier) { (dict, error) in
-                    if let error = error {
-                        print("⚠️", error)
-//                        self.isShowingAlert = true
-                    }
-
-                    guard let itemDict = dict as? NSDictionary else {
-                        return
-                    }
-                    guard let jsValues = itemDict[NSExtensionJavaScriptPreprocessingResultsKey] as? NSDictionary else {
-                        return
-                    }
-
-                    let pageTitle = jsValues["title"] as? String ?? ""
-                    let pageURL = jsValues["URL"] as? String ?? ""
-                    let pageSelectedText = jsValues["selection"] as? String ?? ""
-
-                    if pageSelectedText.isEmpty {
-                        // If there's no selected text, create a Markdown link to the webpage.
-                        self.description = "[\(pageTitle)](\(pageURL))"
-                    } else {
-                        // If there is selected text, create a Markdown blockquote with the selection
-                        // and add a Markdown link to the webpage.
-                        self.description = """
-                        > \(pageSelectedText)
-                        Via: [\(pageTitle)](\(pageURL))
-                        """
-                    }
-                }
-            } else {
-                throw WFActionExtensionError.couldNotParseInputItems
-            }
-        } else {
-            throw WFActionExtensionError.couldNotParseInputItems
-        }
-    }
+//    private func getPageDataFromExtensionContext() throws {
+//        if let inputItem = extensionContext.inputItems.first as? NSExtensionItem {
+//            if let itemProvider = inputItem.attachments?.first {
+//
+//                let typeIdentifier: String
+//
+//                if #available(iOS 15, *) {
+//                    typeIdentifier = UTType.propertyList.identifier
+//                } else {
+//                    typeIdentifier = kUTTypePropertyList as String
+//                }
+//
+//                itemProvider.loadItem(forTypeIdentifier: typeIdentifier) { (dict, error) in
+//                    if let error = error {
+//                        print("⚠️", error)
+////                        self.isShowingAlert = true
+//                    }
+//
+//                    guard let itemDict = dict as? NSDictionary else {
+//                        return
+//                    }
+//                    guard let jsValues = itemDict[NSExtensionJavaScriptPreprocessingResultsKey] as? NSDictionary else {
+//                        return
+//                    }
+//
+//                    let pageTitle = jsValues["title"] as? String ?? ""
+//                    let pageURL = jsValues["URL"] as? String ?? ""
+//                    let pageSelectedText = jsValues["selection"] as? String ?? ""
+//
+//                    if pageSelectedText.isEmpty {
+//                        // If there's no selected text, create a Markdown link to the webpage.
+//                        self.description = "[\(pageTitle)](\(pageURL))"
+//                    } else {
+//                        // If there is selected text, create a Markdown blockquote with the selection
+//                        // and add a Markdown link to the webpage.
+//                        self.description = """
+//                        > \(pageSelectedText)
+//                        Via: [\(pageTitle)](\(pageURL))
+//                        """
+//                    }
+//                }
+//            } else {
+//                throw WFActionExtensionError.couldNotParseInputItems
+//            }
+//        } else {
+//            throw WFActionExtensionError.couldNotParseInputItems
+//        }
+//    }
 }
