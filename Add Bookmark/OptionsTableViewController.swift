@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol OptionsTableViewDelegate: class {
+protocol OptionsTableViewDelegate: AnyObject {
     func didEnterInformation(data: Bookmark)
 }
 

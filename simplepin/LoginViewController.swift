@@ -22,7 +22,6 @@ class LoginViewController: UIViewController {
     @IBOutlet var stackBottomConstraint: NSLayoutConstraint!
     @IBOutlet var forgotPasswordButton: UIButton!
     @IBOutlet var loginMethodSegment: UISegmentedControl!
-    @IBOutlet var onepasswordButton: UIButton!
 
     //MARK: - Lifecycle
 
@@ -31,9 +30,6 @@ class LoginViewController: UIViewController {
 
         usernameField.delegate = self
         passwordField.delegate = self
-
-        onepasswordButton.isHidden = (false == OnePasswordExtension.shared().isAppExtensionAvailable())
-        onepasswordButton.imageView?.contentMode = .scaleAspectFit
 
         notifications.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         notifications.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -137,22 +133,6 @@ class LoginViewController: UIViewController {
         }
     }
     
-    @IBAction func findLoginFrom1Password(_ sender: Any) {
-        OnePasswordExtension.shared().findLogin(forURLString: "https://pinboard.in", for: self, sender: sender, completion: { (loginDictionary, error) -> Void in
-                    if loginDictionary == nil {
-        //                if error!.code != Int(AppExtensionErrorCodeCancelledByUser) {
-        //                    print("Error invoking 1Password App Extension for find login: \(error)")
-        //                }
-                        return
-                    }
-
-                    self.usernameField.text = loginDictionary?[AppExtensionUsernameKey] as? String
-                    self.passwordField.text = loginDictionary?[AppExtensionPasswordKey] as? String
-
-                    self.actionLogin()
-                })
-    }
-
     //MARK: - Events
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         usernameField.resignFirstResponder()

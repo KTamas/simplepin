@@ -256,20 +256,6 @@ class BookmarksTableViewController: UITableViewController, UISearchBarDelegate, 
         print("This got called")
     }
     
-    
-    //    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    //        searchTimer?.invalidate()
-    //        searchTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.logSearchQuery), userInfo: searchText, repeats: false)
-    //    }
-    
-    //    @objc func logSearchQuery() {
-    //        if let search = searchTimer?.userInfo as? String {
-    //            if search.count > 2 {
-    //                print(search)
-    //            }
-    //        }
-    //    }
-    
     // MARK: - Table view
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -514,14 +500,8 @@ class BookmarksTableViewController: UITableViewController, UISearchBarDelegate, 
 
 extension BookmarksTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        print("why is this empty")
         filterContentForSearchText(searchText: searchController.searchBar.text!)
     }
-    
-//    func updateSearchResultsForSearchController(searchController: UISearchController) {
-//        print("why is there two of these")
-//        filterContentForSearchText(searchText: searchController.searchBar.text!)
-//    }
 }
 
 // implement Hashable to support Sets (and Equatable to support Hashable)
