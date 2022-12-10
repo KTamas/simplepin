@@ -12,7 +12,7 @@ import SafariServices
 class BookmarksTableViewController: UITableViewController, UISearchBarDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
-    let activityIndicator = UIActivityIndicatorView(style: .gray)
+    let activityIndicator = UIActivityIndicatorView(style: .medium)
     let defaults = UserDefaults(suiteName: "group.ml.simplepinkt")!
     let searchController = UISearchController(searchResultsController: nil)
     let notifications = NotificationCenter.default
@@ -71,7 +71,6 @@ class BookmarksTableViewController: UITableViewController, UISearchBarDelegate, 
     func configureSearchController() {
         searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.autocapitalizationType = .none
         searchController.searchBar.spellCheckingType = .no
         searchController.searchBar.searchBarStyle = .default

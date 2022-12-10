@@ -24,7 +24,7 @@ class TagCollectionViewCell: UICollectionViewCell  {
         if string[index] == "." {
             tagLabel.textColor = UIColor.darkGray
             tagLabel.highlightedTextColor = UIColor.darkGray
-            tagLabel.backgroundColor = UIColor.groupTableViewBackground
+            tagLabel.backgroundColor = UIColor.systemGroupedBackground
             tagLabel.layer.borderColor = UIColor.blue.withAlphaComponent(0.12).cgColor
         } else {
             tagLabel.textColor = Colors.Blue
