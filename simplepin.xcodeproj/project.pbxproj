@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A0B5780294533CC003B97E3 /* UniformTypeIdentifiers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A0B577F294533CB003B97E3 /* UniformTypeIdentifiers.framework */; };
+		4A0B5783294533CC003B97E3 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A0B5782294533CC003B97E3 /* Media.xcassets */; };
+		4A0B5785294533CC003B97E3 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B5784294533CC003B97E3 /* ActionViewController.swift */; };
+		4A0B578C294533CC003B97E3 /* Add Bookmark Action.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4A0B577D294533CB003B97E3 /* Add Bookmark Action.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4A0B5792294536AA003B97E3 /* ActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B5791294536AA003B97E3 /* ActionView.swift */; };
+		4A0B57972945385A003B97E3 /* EnvironmentValues+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B57962945385A003B97E3 /* EnvironmentValues+Extensions.swift */; };
+		4A0B57982945385A003B97E3 /* EnvironmentValues+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B57962945385A003B97E3 /* EnvironmentValues+Extensions.swift */; };
+		4A0B579A29453890003B97E3 /* UIHostingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B579929453890003B97E3 /* UIHostingView.swift */; };
+		4A0B579B29453890003B97E3 /* UIHostingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B579929453890003B97E3 /* UIHostingView.swift */; };
 		4A37EA111CAC616B0042796D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A37EA101CAC616B0042796D /* LoginViewController.swift */; };
 		4A66CDF71D2ED3DB00E1E58D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCAC5E5F1C84A8A1006BA336 /* Assets.xcassets */; };
 		4AA5D4511D369A4100FC4735 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA5D4501D369A4100FC4735 /* Global.swift */; };
@@ -35,6 +44,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		4A0B578A294533CC003B97E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CCAC5E4D1C84A8A1006BA336 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4A0B577C294533CB003B97E3;
+			remoteInfo = "Add Bookmark Action";
+		};
 		4ABD20B11D2AE99D000190DE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CCAC5E4D1C84A8A1006BA336 /* Project object */;
@@ -51,6 +67,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				4A0B578C294533CC003B97E3 /* Add Bookmark Action.appex in Embed App Extensions */,
 				4ABD20B31D2AE99D000190DE /* Add Bookmark.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -59,6 +76,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4A0B577D294533CB003B97E3 /* Add Bookmark Action.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Add Bookmark Action.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A0B577F294533CB003B97E3 /* UniformTypeIdentifiers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UniformTypeIdentifiers.framework; path = System/Library/Frameworks/UniformTypeIdentifiers.framework; sourceTree = SDKROOT; };
+		4A0B5782294533CC003B97E3 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		4A0B5784294533CC003B97E3 /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
+		4A0B5789294533CC003B97E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A0B5790294535AA003B97E3 /* Add Bookmark Action.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Add Bookmark Action.entitlements"; sourceTree = "<group>"; };
+		4A0B5791294536AA003B97E3 /* ActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionView.swift; sourceTree = "<group>"; };
+		4A0B57962945385A003B97E3 /* EnvironmentValues+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+Extensions.swift"; sourceTree = "<group>"; };
+		4A0B579929453890003B97E3 /* UIHostingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHostingView.swift; sourceTree = "<group>"; };
 		4A37EA101CAC616B0042796D /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4AA5D4501D369A4100FC4735 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		4ABD20A91D2AE99D000190DE /* Add Bookmark.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Add Bookmark.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +116,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4A0B577A294533CB003B97E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A0B5780294533CC003B97E3 /* UniformTypeIdentifiers.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4ABD20A61D2AE99D000190DE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -107,6 +141,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A0B577E294533CB003B97E3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4A0B577F294533CB003B97E3 /* UniformTypeIdentifiers.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4A0B5781294533CC003B97E3 /* Add Bookmark Action */ = {
+			isa = PBXGroup;
+			children = (
+				4A0B5790294535AA003B97E3 /* Add Bookmark Action.entitlements */,
+				4A0B5782294533CC003B97E3 /* Media.xcassets */,
+				4A0B5784294533CC003B97E3 /* ActionViewController.swift */,
+				4A0B5789294533CC003B97E3 /* Info.plist */,
+				4A0B5791294536AA003B97E3 /* ActionView.swift */,
+			);
+			path = "Add Bookmark Action";
+			sourceTree = "<group>";
+		};
 		4A134B201CEB84D4004A99F4 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +190,8 @@
 				CC1E531A1CB80A20002532FB /* UIViewControllerExtension.swift */,
 				CCF0BCD01D021E05007802B0 /* Colors.swift */,
 				CCADA2571D338DB400C65FB3 /* BoolExtension.swift */,
+				4A0B57962945385A003B97E3 /* EnvironmentValues+Extensions.swift */,
+				4A0B579929453890003B97E3 /* UIHostingView.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -145,6 +201,8 @@
 			children = (
 				CCAC5E571C84A8A1006BA336 /* Simplepin */,
 				4ABD20AA1D2AE99D000190DE /* Add Bookmark */,
+				4A0B5781294533CC003B97E3 /* Add Bookmark Action */,
+				4A0B577E294533CB003B97E3 /* Frameworks */,
 				CCAC5E561C84A8A1006BA336 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -154,6 +212,7 @@
 			children = (
 				CCAC5E551C84A8A1006BA336 /* Simplepin.app */,
 				4ABD20A91D2AE99D000190DE /* Add Bookmark.appex */,
+				4A0B577D294533CB003B97E3 /* Add Bookmark Action.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -185,6 +244,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4A0B577C294533CB003B97E3 /* Add Bookmark Action */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A0B578F294533CC003B97E3 /* Build configuration list for PBXNativeTarget "Add Bookmark Action" */;
+			buildPhases = (
+				4A0B5779294533CB003B97E3 /* Sources */,
+				4A0B577A294533CB003B97E3 /* Frameworks */,
+				4A0B577B294533CB003B97E3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Add Bookmark Action";
+			productName = "Add Bookmark Action";
+			productReference = 4A0B577D294533CB003B97E3 /* Add Bookmark Action.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		4ABD20A81D2AE99D000190DE /* Add Bookmark */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4ABD20B61D2AE99D000190DE /* Build configuration list for PBXNativeTarget "Add Bookmark" */;
@@ -215,6 +291,7 @@
 			);
 			dependencies = (
 				4ABD20B21D2AE99D000190DE /* PBXTargetDependency */,
+				4A0B578B294533CC003B97E3 /* PBXTargetDependency */,
 			);
 			name = Simplepin;
 			productName = simplepin;
@@ -227,10 +304,15 @@
 		CCAC5E4D1C84A8A1006BA336 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Mathias Lindholm";
 				TargetAttributes = {
+					4A0B577C294533CB003B97E3 = {
+						CreatedOnToolsVersion = 14.1;
+						DevelopmentTeam = 62NCUR7FDB;
+						ProvisioningStyle = Automatic;
+					};
 					4ABD20A81D2AE99D000190DE = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 62NCUR7FDB;
@@ -268,11 +350,20 @@
 			targets = (
 				CCAC5E541C84A8A1006BA336 /* Simplepin */,
 				4ABD20A81D2AE99D000190DE /* Add Bookmark */,
+				4A0B577C294533CB003B97E3 /* Add Bookmark Action */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4A0B577B294533CB003B97E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A0B5783294533CC003B97E3 /* Media.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4ABD20A71D2AE99D000190DE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -295,6 +386,17 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4A0B5779294533CB003B97E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A0B5792294536AA003B97E3 /* ActionView.swift in Sources */,
+				4A0B57982945385A003B97E3 /* EnvironmentValues+Extensions.swift in Sources */,
+				4A0B5785294533CC003B97E3 /* ActionViewController.swift in Sources */,
+				4A0B579B29453890003B97E3 /* UIHostingView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4ABD20A51D2AE99D000190DE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -322,8 +424,10 @@
 				8C4A5D67241FAA8400CDF027 /* Helpers.swift in Sources */,
 				CC32192B1CB3032F00284118 /* StringExtension.swift in Sources */,
 				CCAC5E591C84A8A1006BA336 /* AppDelegate.swift in Sources */,
+				4A0B579A29453890003B97E3 /* UIHostingView.swift in Sources */,
 				CCAC5EFB1C84ED06006BA336 /* BookmarkTableViewCell.swift in Sources */,
 				CC56D2771C96F61A004D0896 /* SettingsModalViewController.swift in Sources */,
+				4A0B57972945385A003B97E3 /* EnvironmentValues+Extensions.swift in Sources */,
 				4ACF3E141CFF5B620006A587 /* TagCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,6 +435,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		4A0B578B294533CC003B97E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4A0B577C294533CB003B97E3 /* Add Bookmark Action */;
+			targetProxy = 4A0B578A294533CC003B97E3 /* PBXContainerItemProxy */;
+		};
 		4ABD20B21D2AE99D000190DE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4ABD20A81D2AE99D000190DE /* Add Bookmark */;
@@ -366,6 +475,76 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4A0B578D294533CC003B97E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "Add Bookmark Action/Add Bookmark Action.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 21;
+				DEVELOPMENT_TEAM = 62NCUR7FDB;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Add Bookmark Action/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Add Bookmark Action";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mathias Lindholm. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 1.1.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "ml.simplepinkt.Add-Bookmark-Action";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4A0B578E294533CC003B97E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "Add Bookmark Action/Add Bookmark Action.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 21;
+				DEVELOPMENT_TEAM = 62NCUR7FDB;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Add Bookmark Action/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Add Bookmark Action";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mathias Lindholm. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 1.1.2;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "ml.simplepinkt.Add-Bookmark-Action";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		4ABD20B41D2AE99D000190DE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -567,6 +746,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4A0B578F294533CC003B97E3 /* Build configuration list for PBXNativeTarget "Add Bookmark Action" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A0B578D294533CC003B97E3 /* Debug */,
+				4A0B578E294533CC003B97E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4ABD20B61D2AE99D000190DE /* Build configuration list for PBXNativeTarget "Add Bookmark" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
