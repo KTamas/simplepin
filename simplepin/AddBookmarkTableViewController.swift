@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Fabric
-import Crashlytics
 
 class AddBookmarkTableViewController: UITableViewController, UITextViewDelegate, UITextFieldDelegate {
     let defaults = UserDefaults(suiteName: "group.ml.simplepin")!
@@ -61,8 +59,6 @@ class AddBookmarkTableViewController: UITableViewController, UITextViewDelegate,
         if !descriptionTextView.text.isEmpty {
             descriptionTextView.backgroundColor = UIColor.white
         }
-
-        Answers.logContentView(withName: "Add/edit bookmark view", contentType: "View", contentId: "addedit-1", customAttributes: [:])
     }
 
     override func viewDidDisappear(_ animated: Bool) {

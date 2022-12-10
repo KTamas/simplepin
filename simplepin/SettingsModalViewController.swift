@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Fabric
-import Crashlytics
 
 class SettingsModalViewController: UITableViewController {
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
@@ -64,9 +62,7 @@ class SettingsModalViewController: UITableViewController {
         }
 
         logoutButton.tintColor = Colors.Red
-
-        Answers.logContentView(withName: "Settings view", contentType: "View", contentId: "settings-1", customAttributes: [:])
-    }
+     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath as IndexPath) else { return }
@@ -116,51 +112,30 @@ class SettingsModalViewController: UITableViewController {
     }
     
     @IBAction func tapOnPrivateByDefault(_ sender: Any) {
-        if privateByDefaultSwitch.isOn == true {
-            Answers.logCustomEvent(withName: "Switch Pressed", customAttributes: ["Switch": "privateByDefault"])
-        }
         defaults.set(privateByDefaultSwitch.isOn, forKey: "privateByDefault")
     }
     
     @IBAction func markAsReadTapped(_ sender: Any) {
-        if markAsReadSwitch.isOn == true {
-            Answers.logCustomEvent(withName: "Switch Pressed", customAttributes: ["Switch": "markAsRead"])
-        }
         defaults.set(markAsReadSwitch.isOn, forKey: "markAsRead")
     }
     
     @IBAction func toReadByDefaultTapped(_ sender: Any) {
-        if toreadByDefaultSwitch.isOn == true {
-            Answers.logCustomEvent(withName: "Switch Pressed", customAttributes: ["Switch": "toreadByDefault"])
-        }
         defaults.set(toreadByDefaultSwitch.isOn, forKey: "toreadByDefault")
     }
     
     @IBAction func openInSafariSwitchTapped(_ sender: Any) {
-        if openInSafariSwitch.isOn == true {
-            Answers.logCustomEvent(withName: "Switch Pressed", customAttributes: ["Switch": "openInSafari"])
-        }
         defaults.set(openInSafariSwitch.isOn, forKey: "openInSafari")
     }
 
     @IBAction func boldTitleSwitchTapped(_ sender: Any) {
-        if boldTitleSwitch.isOn == true {
-            Answers.logCustomEvent(withName: "Switch Pressed", customAttributes: ["Switch": "boldTitleFont"])
-        }
         defaults.set(boldTitleSwitch.isOn, forKey: "boldTitleFont")
     }
 
     @IBAction func relativeDateSwitchTapped(_ sender: Any) {
-        if relativeDateSwitch.isOn == true {
-            Answers.logCustomEvent(withName: "Switch Pressed", customAttributes: ["Switch": "relativeDate"])
-        }
         defaults.set(relativeDateSwitch.isOn, forKey: "relativeDate")
     }
     
     @IBAction func addClipboardSwitchTapped(_ sender: Any) {
-        if addClipboardSwitch.isOn == true {
-            Answers.logCustomEvent(withName: "Switch Pressed", customAttributes: ["Switch": "addClipboard"])
-        }
         defaults.set(addClipboardSwitch.isOn, forKey: "addClipboard")
     }
     

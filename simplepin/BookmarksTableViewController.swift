@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Fabric
-import Crashlytics
 import SafariServices
 
 class BookmarksTableViewController: UITableViewController, UISearchBarDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -51,8 +49,6 @@ class BookmarksTableViewController: UITableViewController, UISearchBarDelegate, 
             startFetchAllPosts()
         }
 
-        sendExtensionAnalyticsToFabric()
-
         configureSearchController()
 
         self.refreshControl?.tintColor = UIColor.lightGray
@@ -70,22 +66,6 @@ class BookmarksTableViewController: UITableViewController, UISearchBarDelegate, 
         checkForUpdatesTask?.cancel()
         deleteBookmarkTask?.cancel()
         fetchTagsTask?.cancel()
-    }
-
-    func sendExtensionAnalyticsToFabric() {
-        if let openShareExtension = defaults.object(forKey: "openShareExtension") as? [Int] {
-            for _ in openShareExtension {
-                Answers.logContentView(withName: "Open Share Extension", contentType: "Extension", contentId: "extension-1", customAttributes: [:])
-            }
-            defaults.removeObject(forKey: "openShareExtension")
-        }
-
-        if let postToPinboard = defaults.object(forKey: "postToPinboard") as? [Int] {
-            for _ in postToPinboard {
-                Answers.logContentView(withName: "Post to Pinboard", contentType: "Extension", contentId: "extension-2", customAttributes: [:])
-            }
-            defaults.removeObject(forKey: "postToPinboard")
-        }
     }
 
     func configureSearchController() {
@@ -279,7 +259,7 @@ class BookmarksTableViewController: UITableViewController, UISearchBarDelegate, 
     @objc func logSearchQuery() {
         if let search = searchTimer?.userInfo as? String {
             if search.count > 2 {
-                Answers.logSearch(withQuery: search, customAttributes: nil)
+                print(search)
             }
         }
     }

@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Fabric
-import Crashlytics
 import SafariServices
 
 class LoginViewController: UIViewController {
@@ -92,7 +90,6 @@ class LoginViewController: UIViewController {
                     self.defaults.set(username, forKey: "userName")
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loginSuccessful"), object: nil)
                     self.dismiss(animated: true, completion: nil)
-                    Answers.logLogin(withMethod: "API Token", success: true, customAttributes: [:])
                 } else {
                     self.loginFailed(title: "Incorrect API Token")
                     return
@@ -106,7 +103,6 @@ class LoginViewController: UIViewController {
                     self.defaults.set(username, forKey: "userName")
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loginSuccessful"), object: nil)
                     self.dismiss(animated: true, completion: nil)
-                    Answers.logLogin(withMethod: "Username and Password", success: true, customAttributes: [:])
                 } else {
                     self.loginFailed(title: "Incorrect Username or Password")
                     return

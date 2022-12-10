@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Fabric
-import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,7 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.showLoginScreen(animated: false)
         }
 
-        Fabric.with([Crashlytics.self])
         return true
     }
     func showLoginScreen(animated: Bool) {
@@ -55,7 +52,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         for key in defaults.dictionaryRepresentation() {
             defaults.removeObject(forKey: key.0)
         }
-        Answers.logCustomEvent(withName: "Log Out", customAttributes: nil)
         self.showLoginScreen(animated: true)
     }
 }
