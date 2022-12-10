@@ -10,7 +10,7 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    let defaults = UserDefaults(suiteName: "group.ml.simplepin")!
+    let defaults = UserDefaults(suiteName: "group.ml.simplepinkt")!
     var window: UIWindow?
     var storyboard: UIStoryboard?
     var navigation: UINavigationController?

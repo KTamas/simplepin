@@ -26,7 +26,7 @@ struct Bookmark {
 }
 
 class ShareViewController: SLComposeServiceViewController, OptionsTableViewDelegate {
-    let groupDefaults = UserDefaults(suiteName: "group.ml.simplepin")!
+    let groupDefaults = UserDefaults(suiteName: "group.ml.simplepinkt")!
     var addBookmarkTask: URLSessionTask?
     var bookmark = Bookmark()
 

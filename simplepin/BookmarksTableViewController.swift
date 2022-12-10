@@ -13,7 +13,7 @@ class BookmarksTableViewController: UITableViewController, UISearchBarDelegate, 
     
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
     let activityIndicator = UIActivityIndicatorView(style: .gray)
-    let defaults = UserDefaults(suiteName: "group.ml.simplepin")!
+    let defaults = UserDefaults(suiteName: "group.ml.simplepinkt")!
     let searchController = UISearchController(searchResultsController: nil)
     let notifications = NotificationCenter.default
     var bookmarksArray = [BookmarkItem]()

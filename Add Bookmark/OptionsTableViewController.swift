@@ -15,7 +15,7 @@ protocol OptionsTableViewDelegate: class {
 class OptionsTableViewController: UITableViewController {
     weak var delegate: OptionsTableViewDelegate? = nil
     var passedBookmark = Bookmark()
-    let groupDefaults = UserDefaults(suiteName: "group.ml.simplepin")!
+    let groupDefaults = UserDefaults(suiteName: "group.ml.simplepinkt")!
 
     var descriptionCell: UITableViewCell = UITableViewCell()
     var tagsCell: UITableViewCell = UITableViewCell()

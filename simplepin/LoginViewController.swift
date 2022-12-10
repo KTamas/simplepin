@@ -10,7 +10,7 @@ import UIKit
 import SafariServices
 
 class LoginViewController: UIViewController {
-    let defaults = UserDefaults(suiteName: "group.ml.simplepin")!
+    let defaults = UserDefaults(suiteName: "group.ml.simplepinkt")!
     let notifications = NotificationCenter.default
     var fetchApiTokenTask: URLSessionTask?
     var tokenLogin = false

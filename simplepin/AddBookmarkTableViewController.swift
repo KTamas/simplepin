@@ -9,7 +9,7 @@
 import UIKit
 
 class AddBookmarkTableViewController: UITableViewController, UITextViewDelegate, UITextFieldDelegate {
-    let defaults = UserDefaults(suiteName: "group.ml.simplepin")!
+    let defaults = UserDefaults(suiteName: "group.ml.simplepinkt")!
     var addBookmarkTask: URLSessionTask?
     var passedUrl: URL?
     var bookmarkDate: Date?

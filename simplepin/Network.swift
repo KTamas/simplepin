@@ -11,7 +11,7 @@ import SystemConfiguration
 
 //MARK: - Network
 
-private let defaults = UserDefaults(suiteName: "group.ml.simplepin")!
+private let defaults = UserDefaults(suiteName: "group.ml.simplepinkt")!
 
 struct Network {
     static let config = URLSessionConfiguration.default

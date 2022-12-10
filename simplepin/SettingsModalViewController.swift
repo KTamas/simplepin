@@ -10,7 +10,7 @@ import UIKit
 
 class SettingsModalViewController: UITableViewController {
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
-    let defaults = UserDefaults(suiteName: "group.ml.simplepin")!
+    let defaults = UserDefaults(suiteName: "group.ml.simplepinkt")!
     let appstoreUrl = URL(string: "itms://itunes.apple.com/us/app/simplepin/id1107506693?ls=1&mt=8")!
     let emailUrl = URL(string: "mailto:mathias.lindholm@gmail.com?subject=Simplepin%20Feedback")!
     let device = UIDevice.current.userInterfaceIdiom
