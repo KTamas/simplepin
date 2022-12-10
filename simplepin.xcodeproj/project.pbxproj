@@ -260,7 +260,7 @@
 				TargetAttributes = {
 					4ABD20A81D2AE99D000190DE = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 7Q878QDTU9;
+						DevelopmentTeam = 62NCUR7FDB;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -270,7 +270,7 @@
 					};
 					CCAC5E541C84A8A1006BA336 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 7Q878QDTU9;
+						DevelopmentTeam = 62NCUR7FDB;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -419,11 +419,11 @@
 				CODE_SIGN_ENTITLEMENTS = "Add Bookmark/Add Bookmark.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 7Q878QDTU9;
+				DEVELOPMENT_TEAM = 62NCUR7FDB;
 				INFOPLIST_FILE = "Add Bookmark/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "ml.simplepin.Add-Bookmark";
+				PRODUCT_BUNDLE_IDENTIFIER = "ml.simplepinkt.Add-Bookmark";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -440,11 +440,11 @@
 				CODE_SIGN_ENTITLEMENTS = "Add Bookmark/Add Bookmark.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 7Q878QDTU9;
+				DEVELOPMENT_TEAM = 62NCUR7FDB;
 				INFOPLIST_FILE = "Add Bookmark/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "ml.simplepin.Add-Bookmark";
+				PRODUCT_BUNDLE_IDENTIFIER = "ml.simplepinkt.Add-Bookmark";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -568,7 +568,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 7Q878QDTU9;
+				DEVELOPMENT_TEAM = 62NCUR7FDB;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -576,7 +576,7 @@
 				INFOPLIST_FILE = simplepin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ml.simplepin;
+				PRODUCT_BUNDLE_IDENTIFIER = ml.simplepinkt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "simplepin/simplepin-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -594,7 +594,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
-				DEVELOPMENT_TEAM = 7Q878QDTU9;
+				DEVELOPMENT_TEAM = 62NCUR7FDB;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -602,7 +602,7 @@
 				INFOPLIST_FILE = simplepin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ml.simplepin;
+				PRODUCT_BUNDLE_IDENTIFIER = ml.simplepinkt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "simplepin/simplepin-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
