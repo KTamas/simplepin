@@ -33,6 +33,7 @@ struct Bookmark {
 struct ActionView: View {
     @Environment(\.extensionContext) private var extensionContext: NSExtensionContext!
     @Environment(\.managedObjectContext) private var managedObjectContext
+    
 
 //    @AppStorage(WFDefaults.defaultFontIntegerKey, store: UserDefaults.shared) var fontIndex: Int = 0
 
@@ -95,7 +96,8 @@ struct ActionView: View {
                     }
                 }
             }
-            .padding(.bottom, 24)
+        }.onAppear {
+            getUrl(extensionContext: extensionContext)
         }
     }
 //        .alert(isPresented: $isShowingAlert, content: {
@@ -114,7 +116,23 @@ struct ActionView: View {
 //            }
 //        }
 //    }
-
+    func getUrl(extensionContext: NSExtensionContext) {
+        if let item = extensionContext.inputItems.first as? NSExtensionItem {
+            if let title = item.attributedContentText?.string {
+                self.title = title
+            }
+            if let itemProvider = item.attachments?.first {
+                if itemProvider.hasItemConformingToTypeIdentifier("public.url") {
+                    itemProvider.loadItem(forTypeIdentifier: "public.url", options: nil, completionHandler: { (url, error) -> Void in
+                        if let shareURL = url as? URL {
+                            self.url = shareURL.absoluteString
+                        }
+                    })
+                }
+            }
+        }
+    }
+    
     func addBookmark(url: String, title: String, shared: Bool, description: String = "", tags: String, toread: Bool = false) -> Void {
         let groupDefaults = UserDefaults(suiteName: "group.ml.simplepinkt")!
         let userToken = groupDefaults.string(forKey: "userToken")! as String
