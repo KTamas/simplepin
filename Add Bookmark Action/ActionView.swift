@@ -97,11 +97,10 @@ struct ActionView: View {
                 }
             }
         }.onAppear {
-            //            getUrl(extensionContext: extensionContext)
             do {
                 try getPageDataFromExtensionContext()
             } catch {
-                //                            self.isShowingAlert = true
+//              self.isShowingAlert = true
                 print("oops")
             }
         }
@@ -122,30 +121,10 @@ struct ActionView: View {
     //            }
     //        }
     //    }
-    //    func getUrl(extensionContext: NSExtensionContext) {
-    //        if let item = extensionContext.inputItems.first as? NSExtensionItem {
-    //            if let title = item.attributedTitle?.string {
-    //                self.title = title
-    //            }
-    ////            if let title = item.attributedContentText?.string {
-    ////                self.title = title
-    ////            }
-    //            if let itemProvider = item.attachments?.first {
-    //                if itemProvider.hasItemConformingToTypeIdentifier("public.url") {
-    //                    itemProvider.loadItem(forTypeIdentifier: "public.url", options: nil, completionHandler: { (url, error) -> Void in
-    //                        if let shareURL = url as? URL {
-    //                            self.url = shareURL.absoluteString
-    //                        }
-    //                    })
-    //                }
-    //            }
-    //        }
-    //    }
     
     func addBookmark(url: String, title: String, shared: Bool, description: String = "", tags: String, toread: Bool = false) -> Void {
         let groupDefaults = UserDefaults(suiteName: "group.ml.simplepinkt")!
         let userToken = groupDefaults.string(forKey: "userToken")! as String
-        //        let urlString = url.absoluteString
         let shared = !shared
         
         var urlQuery = URLComponents()
@@ -184,29 +163,11 @@ struct ActionView: View {
         return nil
     }
     
-    //    private func savePostToCollection(title: String, body: String) {
-    //        print(title)
-    //        print(body)
-    //        let post = WFAPost(context: managedObjectContext)
-    //        post.createdDate = Date()
-    //        post.title = title
-    //        post.body = body
-    //        post.status = PostStatus.local.rawValue
-    //        post.collectionAlias = collection?.alias
-    //        switch fontIndex {
-    //        case 1:
-    //            post.appearance = "sans"
-    //        case 2:
-    //            post.appearance = "wrap"
-    //        default:
-    //            post.appearance = "serif"
-    //        }
-    //        if let languageCode = Locale.current.languageCode {
-    //            post.language = languageCode
-    //            post.rtl = Locale.characterDirection(forLanguage: languageCode) == .rightToLeft
-    //        }
-    //        LocalStorageManager.standard.saveContext()
-    //    }
+//    private func savePostToCollection(title: String, body: String) {
+//        print(title)
+//        print(body)
+//        LocalStorageManager.standard.saveContext()
+//    }
     
     private func getPageDataFromExtensionContext() throws {
         if let inputItem = extensionContext.inputItems.first as? NSExtensionItem {
@@ -223,7 +184,7 @@ struct ActionView: View {
                 itemProvider.loadItem(forTypeIdentifier: typeIdentifier) { (dict, error) in
                     if let error = error {
                         print("⚠️", error)
-                        //                        self.isShowingAlert = true
+//                      self.isShowingAlert = true
                     }
                     
                     guard let itemDict = dict as? NSDictionary else {
@@ -236,18 +197,6 @@ struct ActionView: View {
                     self.title = jsValues["title"] as? String ?? ""
                     self.url = jsValues["URL"] as? String ?? ""
                     self.description = jsValues["selection"] as? String ?? ""
-                    
-//                    if pageSelectedText.isEmpty {
-//                        // If there's no selected text, create a Markdown link to the webpage.
-//                        self.description = "[\(pageTitle)](\(pageURL))"
-//                    } else {
-//                        // If there is selected text, create a Markdown blockquote with the selection
-//                        // and add a Markdown link to the webpage.
-//                        self.description = """
-//                        > \(pageSelectedText)
-//                        Via: [\(pageTitle)](\(pageURL))
-//                        """
-//                    }
                 }
             } else {
                 throw WFActionExtensionError.couldNotParseInputItems
