@@ -20,7 +20,7 @@ struct Bookmark {
     var tags: String
     var personal: Bool
     var toread: Bool
-
+    
     init() {
         self.url = NSURL()
         self.description = ""
@@ -34,24 +34,24 @@ struct ActionView: View {
     @Environment(\.extensionContext) private var extensionContext: NSExtensionContext!
     @Environment(\.managedObjectContext) private var managedObjectContext
     
-
-//    @AppStorage(WFDefaults.defaultFontIntegerKey, store: UserDefaults.shared) var fontIndex: Int = 0
-
-//    @FetchRequest(
-//        entity: WFACollection.entity(),
-//        sortDescriptors: [NSSortDescriptor(keyPath: \WFACollection.title, ascending: true)]
-//    ) var collections: FetchedResults<WFACollection>
-
+    
+    //    @AppStorage(WFDefaults.defaultFontIntegerKey, store: UserDefaults.shared) var fontIndex: Int = 0
+    
+    //    @FetchRequest(
+    //        entity: WFACollection.entity(),
+    //        sortDescriptors: [NSSortDescriptor(keyPath: \WFACollection.title, ascending: true)]
+    //    ) var collections: FetchedResults<WFACollection>
+    
     @State private var url: String = ""
     @State private var title: String = ""
     @State private var description: String = ""
     @State private var tags: String = ""
     @State private var isPrivate: Bool = false
     @State private var isReadLater: Bool = false
-
+    
     private var controls: some View {
-            HStack {
-                Group {
+        HStack {
+            Group {
                 Button(
                     action: { extensionContext.cancelRequest(withError: WFActionExtensionError.userCancelledRequest) },
                     label: { Image(systemName: "xmark.circle").imageScale(.large) }
@@ -66,9 +66,9 @@ struct ActionView: View {
                     label: { Image(systemName: "square.and.arrow.down").imageScale(.large) }
                 )
                 .accessibilityLabel(Text("Create new Bookmark"))
-                }
-                .padding()
             }
+            .padding()
+        }
     }
     
     var body: some View {
@@ -97,48 +97,57 @@ struct ActionView: View {
                 }
             }
         }.onAppear {
-            getUrl(extensionContext: extensionContext)
-        }
-    }
-//        .alert(isPresented: $isShowingAlert, content: {
-//            Alert(
-//                title: Text("Something Went Wrong"),
-//                message: Text("WriteFreely can't create a draft with the data received."),
-//                dismissButton: .default(Text("OK"), action: {
-//                    extensionContext.cancelRequest(withError: WFActionExtensionError.couldNotParseInputItems)
-//                }))
-//        })
-//        .onAppear {
-//            do {
-//                try getPageDataFromExtensionContext()
-//            } catch {
-//                self.isShowingAlert = true
-//            }
-//        }
-//    }
-    func getUrl(extensionContext: NSExtensionContext) {
-        if let item = extensionContext.inputItems.first as? NSExtensionItem {
-            if let title = item.attributedContentText?.string {
-                self.title = title
-            }
-            if let itemProvider = item.attachments?.first {
-                if itemProvider.hasItemConformingToTypeIdentifier("public.url") {
-                    itemProvider.loadItem(forTypeIdentifier: "public.url", options: nil, completionHandler: { (url, error) -> Void in
-                        if let shareURL = url as? URL {
-                            self.url = shareURL.absoluteString
-                        }
-                    })
-                }
+            //            getUrl(extensionContext: extensionContext)
+            do {
+                try getPageDataFromExtensionContext()
+            } catch {
+                //                            self.isShowingAlert = true
+                print("oops")
             }
         }
     }
+    //        .alert(isPresented: $isShowingAlert, content: {
+    //            Alert(
+    //                title: Text("Something Went Wrong"),
+    //                message: Text("WriteFreely can't create a draft with the data received."),
+    //                dismissButton: .default(Text("OK"), action: {
+    //                    extensionContext.cancelRequest(withError: WFActionExtensionError.couldNotParseInputItems)
+    //                }))
+    //        })
+    //        .onAppear {
+    //            do {
+    //                try getPageDataFromExtensionContext()
+    //            } catch {
+    //                self.isShowingAlert = true
+    //            }
+    //        }
+    //    }
+    //    func getUrl(extensionContext: NSExtensionContext) {
+    //        if let item = extensionContext.inputItems.first as? NSExtensionItem {
+    //            if let title = item.attributedTitle?.string {
+    //                self.title = title
+    //            }
+    ////            if let title = item.attributedContentText?.string {
+    ////                self.title = title
+    ////            }
+    //            if let itemProvider = item.attachments?.first {
+    //                if itemProvider.hasItemConformingToTypeIdentifier("public.url") {
+    //                    itemProvider.loadItem(forTypeIdentifier: "public.url", options: nil, completionHandler: { (url, error) -> Void in
+    //                        if let shareURL = url as? URL {
+    //                            self.url = shareURL.absoluteString
+    //                        }
+    //                    })
+    //                }
+    //            }
+    //        }
+    //    }
     
     func addBookmark(url: String, title: String, shared: Bool, description: String = "", tags: String, toread: Bool = false) -> Void {
         let groupDefaults = UserDefaults(suiteName: "group.ml.simplepinkt")!
         let userToken = groupDefaults.string(forKey: "userToken")! as String
-//        let urlString = url.absoluteString
+        //        let urlString = url.absoluteString
         let shared = !shared
-
+        
         var urlQuery = URLComponents()
         urlQuery.scheme = "https"
         urlQuery.host = "api.pinboard.in"
@@ -153,7 +162,7 @@ struct ActionView: View {
             URLQueryItem(name: "auth_token", value: userToken),
             URLQueryItem(name: "format", value: "json"),
         ]
-
+        
         let task = URLSession.shared.dataTask(with: urlQuery.url!) { data, response, error in
             if let data = data {
                 let resultCode = self.parseJSON(data: data, key: "result_code")
@@ -164,70 +173,70 @@ struct ActionView: View {
                 print("HTTP Request Failed \(error)")
             }
         }
-
+        
         task.resume()
     }
-
+    
     func parseJSON(data: Data, key: String) -> String? {
         if let jsonObject = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String: AnyObject] {
             return jsonObject["\(key)"] as? String
         }
         return nil
     }
-
-//    private func savePostToCollection(title: String, body: String) {
-//        print(title)
-//        print(body)
-//        let post = WFAPost(context: managedObjectContext)
-//        post.createdDate = Date()
-//        post.title = title
-//        post.body = body
-//        post.status = PostStatus.local.rawValue
-//        post.collectionAlias = collection?.alias
-//        switch fontIndex {
-//        case 1:
-//            post.appearance = "sans"
-//        case 2:
-//            post.appearance = "wrap"
-//        default:
-//            post.appearance = "serif"
-//        }
-//        if let languageCode = Locale.current.languageCode {
-//            post.language = languageCode
-//            post.rtl = Locale.characterDirection(forLanguage: languageCode) == .rightToLeft
-//        }
-//        LocalStorageManager.standard.saveContext()
-//    }
-
-//    private func getPageDataFromExtensionContext() throws {
-//        if let inputItem = extensionContext.inputItems.first as? NSExtensionItem {
-//            if let itemProvider = inputItem.attachments?.first {
-//
-//                let typeIdentifier: String
-//
-//                if #available(iOS 15, *) {
-//                    typeIdentifier = UTType.propertyList.identifier
-//                } else {
-//                    typeIdentifier = kUTTypePropertyList as String
-//                }
-//
-//                itemProvider.loadItem(forTypeIdentifier: typeIdentifier) { (dict, error) in
-//                    if let error = error {
-//                        print("⚠️", error)
-////                        self.isShowingAlert = true
-//                    }
-//
-//                    guard let itemDict = dict as? NSDictionary else {
-//                        return
-//                    }
-//                    guard let jsValues = itemDict[NSExtensionJavaScriptPreprocessingResultsKey] as? NSDictionary else {
-//                        return
-//                    }
-//
-//                    let pageTitle = jsValues["title"] as? String ?? ""
-//                    let pageURL = jsValues["URL"] as? String ?? ""
-//                    let pageSelectedText = jsValues["selection"] as? String ?? ""
-//
+    
+    //    private func savePostToCollection(title: String, body: String) {
+    //        print(title)
+    //        print(body)
+    //        let post = WFAPost(context: managedObjectContext)
+    //        post.createdDate = Date()
+    //        post.title = title
+    //        post.body = body
+    //        post.status = PostStatus.local.rawValue
+    //        post.collectionAlias = collection?.alias
+    //        switch fontIndex {
+    //        case 1:
+    //            post.appearance = "sans"
+    //        case 2:
+    //            post.appearance = "wrap"
+    //        default:
+    //            post.appearance = "serif"
+    //        }
+    //        if let languageCode = Locale.current.languageCode {
+    //            post.language = languageCode
+    //            post.rtl = Locale.characterDirection(forLanguage: languageCode) == .rightToLeft
+    //        }
+    //        LocalStorageManager.standard.saveContext()
+    //    }
+    
+    private func getPageDataFromExtensionContext() throws {
+        if let inputItem = extensionContext.inputItems.first as? NSExtensionItem {
+            if let itemProvider = inputItem.attachments?.first {
+                
+                let typeIdentifier: String
+                
+                if #available(iOS 15, *) {
+                    typeIdentifier = UTType.propertyList.identifier
+                } else {
+                    typeIdentifier = kUTTypePropertyList as String
+                }
+                
+                itemProvider.loadItem(forTypeIdentifier: typeIdentifier) { (dict, error) in
+                    if let error = error {
+                        print("⚠️", error)
+                        //                        self.isShowingAlert = true
+                    }
+                    
+                    guard let itemDict = dict as? NSDictionary else {
+                        return
+                    }
+                    guard let jsValues = itemDict[NSExtensionJavaScriptPreprocessingResultsKey] as? NSDictionary else {
+                        return
+                    }
+                    
+                    self.title = jsValues["title"] as? String ?? ""
+                    self.url = jsValues["URL"] as? String ?? ""
+                    self.description = jsValues["selection"] as? String ?? ""
+                    
 //                    if pageSelectedText.isEmpty {
 //                        // If there's no selected text, create a Markdown link to the webpage.
 //                        self.description = "[\(pageTitle)](\(pageURL))"
@@ -239,12 +248,12 @@ struct ActionView: View {
 //                        Via: [\(pageTitle)](\(pageURL))
 //                        """
 //                    }
-//                }
-//            } else {
-//                throw WFActionExtensionError.couldNotParseInputItems
-//            }
-//        } else {
-//            throw WFActionExtensionError.couldNotParseInputItems
-//        }
-//    }
+                }
+            } else {
+                throw WFActionExtensionError.couldNotParseInputItems
+            }
+        } else {
+            throw WFActionExtensionError.couldNotParseInputItems
+        }
+    }
 }

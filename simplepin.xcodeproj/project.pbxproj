@@ -16,6 +16,8 @@
 		4A0B57982945385A003B97E3 /* EnvironmentValues+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B57962945385A003B97E3 /* EnvironmentValues+Extensions.swift */; };
 		4A0B579A29453890003B97E3 /* UIHostingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B579929453890003B97E3 /* UIHostingView.swift */; };
 		4A0B579B29453890003B97E3 /* UIHostingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B579929453890003B97E3 /* UIHostingView.swift */; };
+		4A0B579D29455618003B97E3 /* Action.js in Resources */ = {isa = PBXBuildFile; fileRef = 4A0B579C29455618003B97E3 /* Action.js */; };
+		4A0B579E29455618003B97E3 /* Action.js in Resources */ = {isa = PBXBuildFile; fileRef = 4A0B579C29455618003B97E3 /* Action.js */; };
 		4A37EA111CAC616B0042796D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A37EA101CAC616B0042796D /* LoginViewController.swift */; };
 		4A66CDF71D2ED3DB00E1E58D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCAC5E5F1C84A8A1006BA336 /* Assets.xcassets */; };
 		4AA5D4511D369A4100FC4735 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA5D4501D369A4100FC4735 /* Global.swift */; };
@@ -85,6 +87,7 @@
 		4A0B5791294536AA003B97E3 /* ActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionView.swift; sourceTree = "<group>"; };
 		4A0B57962945385A003B97E3 /* EnvironmentValues+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+Extensions.swift"; sourceTree = "<group>"; };
 		4A0B579929453890003B97E3 /* UIHostingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHostingView.swift; sourceTree = "<group>"; };
+		4A0B579C29455618003B97E3 /* Action.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Action.js; sourceTree = "<group>"; };
 		4A37EA101CAC616B0042796D /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4AA5D4501D369A4100FC4735 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		4ABD20A91D2AE99D000190DE /* Add Bookmark.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Add Bookmark.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +160,7 @@
 				4A0B5784294533CC003B97E3 /* ActionViewController.swift */,
 				4A0B5789294533CC003B97E3 /* Info.plist */,
 				4A0B5791294536AA003B97E3 /* ActionView.swift */,
+				4A0B579C29455618003B97E3 /* Action.js */,
 			);
 			path = "Add Bookmark Action";
 			sourceTree = "<group>";
@@ -360,6 +364,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A0B579E29455618003B97E3 /* Action.js in Resources */,
 				4A0B5783294533CC003B97E3 /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,6 +384,7 @@
 			files = (
 				CCAC5E631C84A8A1006BA336 /* LaunchScreen.storyboard in Resources */,
 				CCAC5E601C84A8A1006BA336 /* Assets.xcassets in Resources */,
+				4A0B579D29455618003B97E3 /* Action.js in Resources */,
 				CCAC5E5E1C84A8A1006BA336 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
