@@ -100,7 +100,7 @@ struct ActionView: View {
             do {
                 try getPageDataFromExtensionContext()
             } catch {
-//              self.isShowingAlert = true
+                //              self.isShowingAlert = true
                 print("oops")
             }
         }
@@ -163,11 +163,11 @@ struct ActionView: View {
         return nil
     }
     
-//    private func savePostToCollection(title: String, body: String) {
-//        print(title)
-//        print(body)
-//        LocalStorageManager.standard.saveContext()
-//    }
+    //    private func savePostToCollection(title: String, body: String) {
+    //        print(title)
+    //        print(body)
+    //        LocalStorageManager.standard.saveContext()
+    //    }
     
     private func getPageDataFromExtensionContext() throws {
         if let inputItem = extensionContext.inputItems.first as? NSExtensionItem {
@@ -184,7 +184,7 @@ struct ActionView: View {
                 itemProvider.loadItem(forTypeIdentifier: typeIdentifier) { (dict, error) in
                     if let error = error {
                         print("⚠️", error)
-//                      self.isShowingAlert = true
+                        //                      self.isShowingAlert = true
                     }
                     
                     guard let itemDict = dict as? NSDictionary else {

@@ -166,8 +166,8 @@ class BookmarksTableViewController: UITableViewController, UISearchBarDelegate, 
                 self?.defaults.set(Date(), forKey: "lastUpdateDate")
                 self?.tableView.reloadData()
                 self?.checkPasteboard()
-//                KTNOTE: I don't think we need to do this here
-//                self?.filterContentForSearchText(searchText: self?.searchController.searchBar.text ?? "")
+                //                KTNOTE: I don't think we need to do this here
+                //                self?.filterContentForSearchText(searchText: self?.searchController.searchBar.text ?? "")
             }
             fetchTagsTask = Network.fetchTags() { [weak self] tags in
                 self?.tagsArray = tags

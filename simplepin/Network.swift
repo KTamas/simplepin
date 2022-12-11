@@ -389,8 +389,8 @@ struct ParseJSON {
                 defaults.set(jsonObject.count, forKey: "bookmarkCount")
                 for item in jsonObject {
                     guard let bookmarkDict = item as? [String: AnyObject],
-                        let bookmark = BookmarkItem(json: bookmarkDict)
-                        else { continue }
+                          let bookmark = BookmarkItem(json: bookmarkDict)
+                    else { continue }
                     bookmarks.append(bookmark)
                 }
             }
