@@ -56,3 +56,10 @@ Resources I've found useful while developing.
 * [How to respond to view lifecycle events: onAppear() and onDisappear()](https://www.hackingwithswift.com/quick-start/swiftui/how-to-respond-to-view-lifecycle-events-onappear-and-ondisappear)
 * [How to show an alert](https://www.hackingwithswift.com/quick-start/swiftui/how-to-show-an-alert)
 * [SwiftLint](https://github.com/realm/SwiftLint)
+
+## New
+
+* [How to create a new Xcode project without Storyboard](https://sarunw.com/posts/how-to-create-new-xcode-project-without-storyboard/)
+* [To the depth of @objc and dynamic in Swift](https://varun04tomar.medium.com/to-the-depth-of-objc-and-dynamic-in-swift-b5472800b85d)
+* [SwiftUI](https://developer.apple.com/xcode/swiftui/)
+* [optionals](https://www.programiz.com/swift-programming/optionals)
