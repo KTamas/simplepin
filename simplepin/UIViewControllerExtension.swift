@@ -9,13 +9,13 @@
 import UIKit
 
 extension UIViewController {
-    
+
     func alertError(title: String, message: String?) {
         let alert = UIAlertController(title: title, message: message?.sentencecaseString, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-    
+
     func alertErrorWithReachability(title: String, message: String?) {
         var alert = UIAlertController(title: title, message: message?.sentencecaseString, preferredStyle: .alert)
         if Reachability.isConnectedToNetwork() == false {
@@ -24,5 +24,5 @@ extension UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-    
+
 }

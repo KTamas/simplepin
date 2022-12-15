@@ -15,7 +15,7 @@ class SettingsModalViewController: UITableViewController {
     let emailUrl = URL(string: "mailto:mathias.lindholm@gmail.com?subject=Simplepin%20Feedback")!
     let device = UIDevice.current.userInterfaceIdiom
     var bookmarksArray: [BookmarkItem]?
-    
+
     @IBOutlet var usernameLabel: UILabel!
     @IBOutlet var userDetailLabel: UILabel!
     @IBOutlet var logoutButton: UIButton!
@@ -30,25 +30,25 @@ class SettingsModalViewController: UITableViewController {
     @IBOutlet var relativeDateSwitch: UISwitch!
     @IBOutlet var addClipboardSwitch: UISwitch!
     @IBOutlet var headerCell: UITableViewCell!
-    
-    //MARK: - Lifecycle
-    
+
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         usernameLabel.text = defaults.string(forKey: "userName")
-        
+
         if let bookmarks = bookmarksArray {
             let total = bookmarks.count
-            let unread = bookmarks.filter{ $0.toread }.count
-            let personal = bookmarks.filter{ $0.personal }.count
-            
+            let unread = bookmarks.filter { $0.toread }.count
+            let personal = bookmarks.filter { $0.personal }.count
+
             userDetailLabel.text =
             "\(total) bookmark\(total == 1 ? "" : "s") \n"
             + "\(unread) unread \n"
             + "\(personal) private"
         }
-        
+
         markAsReadSwitch.isOn = defaults.bool(forKey: "markAsRead")
         privateByDefaultSwitch.isOn = defaults.bool(forKey: "privateByDefault")
         toreadByDefaultSwitch.isOn = defaults.bool(forKey: "toreadByDefault")
@@ -56,17 +56,17 @@ class SettingsModalViewController: UITableViewController {
         boldTitleSwitch.isOn = defaults.bool(forKey: "boldTitleFont")
         relativeDateSwitch.isOn = defaults.bool(forKey: "relativeDate")
         addClipboardSwitch.isOn = defaults.bool(forKey: "addClipboard")
-        
+
         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
             versionLabel.text = version
         }
-        
+
         logoutButton.tintColor = Colors.Red
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath as IndexPath) else { return }
-        
+
         switch cell {
         case sendFeedbackCell:
             if UIApplication.shared.canOpenURL(emailUrl as URL) {
@@ -85,60 +85,60 @@ class SettingsModalViewController: UITableViewController {
         default: break
         }
     }
-    
-    //MARK: - Actions
-    
+
+    // MARK: - Actions
+
     @IBAction func logoutButtonTapped(_ sender: Any) {
         let alertController = UIAlertController(
             title: device == .pad ? "Do You Want to Log out?" : nil,
             message: nil,
             preferredStyle: device == .pad ? .alert : .actionSheet)
-        
-        let actionLogout = UIAlertAction(title: "Log out", style: UIAlertAction.Style.destructive, handler: { action in
+
+        let actionLogout = UIAlertAction(title: "Log out", style: UIAlertAction.Style.destructive, handler: { _ in
             self.dismiss(animated: true, completion: nil)
             self.appDelegate?.logOut()
         })
         let actionCancel = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
-        
+
         alertController.addAction(actionLogout)
         alertController.addAction(actionCancel)
-        
+
         if let popoverController = alertController.popoverPresentationController {
             popoverController.sourceView = logoutButton
             popoverController.sourceRect = logoutButton.bounds
         }
-        
+
         self.present(alertController, animated: true, completion: nil)
     }
-    
+
     @IBAction func tapOnPrivateByDefault(_ sender: Any) {
         defaults.set(privateByDefaultSwitch.isOn, forKey: "privateByDefault")
     }
-    
+
     @IBAction func markAsReadTapped(_ sender: Any) {
         defaults.set(markAsReadSwitch.isOn, forKey: "markAsRead")
     }
-    
+
     @IBAction func toReadByDefaultTapped(_ sender: Any) {
         defaults.set(toreadByDefaultSwitch.isOn, forKey: "toreadByDefault")
     }
-    
+
     @IBAction func openInSafariSwitchTapped(_ sender: Any) {
         defaults.set(openInSafariSwitch.isOn, forKey: "openInSafari")
     }
-    
+
     @IBAction func boldTitleSwitchTapped(_ sender: Any) {
         defaults.set(boldTitleSwitch.isOn, forKey: "boldTitleFont")
     }
-    
+
     @IBAction func relativeDateSwitchTapped(_ sender: Any) {
         defaults.set(relativeDateSwitch.isOn, forKey: "relativeDate")
     }
-    
+
     @IBAction func addClipboardSwitchTapped(_ sender: Any) {
         defaults.set(addClipboardSwitch.isOn, forKey: "addClipboard")
     }
-    
+
     @IBAction func dismissSettings(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

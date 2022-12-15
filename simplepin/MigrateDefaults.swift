@@ -12,7 +12,7 @@ func migrateUserDefaultsToAppGroups() {
     let userDefaults = UserDefaults.standard
     let groupDefaults = UserDefaults(suiteName: "group.ml.simplepinkt")
     let didMigrateToAppGroups = "DidMigrateToAppGroups"
-    
+
     if let groupDefaults = groupDefaults {
         if !groupDefaults.bool(forKey: didMigrateToAppGroups) {
             for key in userDefaults.dictionaryRepresentation().keys {

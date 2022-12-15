@@ -15,7 +15,7 @@ class AddBookmarkTableViewController: UITableViewController, UITextViewDelegate,
     var bookmarkDate: Date?
     var bookmark: BookmarkItem?
     var tagsArray: [TagItem]?
-    
+
     @IBOutlet var privateSwitch: UISwitch!
     @IBOutlet var toreadSwitch: UISwitch!
     @IBOutlet var urlTextField: UITextField!
@@ -23,19 +23,19 @@ class AddBookmarkTableViewController: UITableViewController, UITextViewDelegate,
     @IBOutlet var descriptionTextView: UITextView!
     @IBOutlet var tagsTextField: UITextField!
     @IBOutlet var addButton: UIBarButtonItem!
-    
-    //MARK: - Lifecycle
-    
+
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         descriptionTextView.delegate = self
         urlTextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
         titleTextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
-        
+
         privateSwitch.isOn = defaults.bool(forKey: "privateByDefault")
         toreadSwitch.isOn = defaults.bool(forKey: "toreadByDefault")
-        
+
         if let bookmark = bookmark {
             navigationItem.title = "Edit Bookmark"
             addButton.title = "Save"
@@ -49,35 +49,35 @@ class AddBookmarkTableViewController: UITableViewController, UITextViewDelegate,
         } else {
             bookmarkDate = nil
         }
-        
+
         if let url = passedUrl {
             urlTextField.text = url.absoluteString
         }
-        
+
         checkValidBookmark()
-        
+
         if !descriptionTextView.text.isEmpty {
             descriptionTextView.backgroundColor = UIColor.white
         }
     }
-    
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         addBookmarkTask?.cancel()
     }
-    
+
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         if section == 0 {
             guard let tags = tagsArray else { return nil }
-            let popular = tags.filter{ $0.count > 1 }.map{ $0.tag }
+            let popular = tags.filter { $0.count > 1 }.map { $0.tag }
             let title = "Top tags: " + popular.joined(separator: ", ")
             return title
         } else {
             return nil
         }
     }
-    
-    //MARK: - Actions
+
+    // MARK: - Actions
     @IBAction func addButtonTapped(_ sender: Any) {
         guard let urlText = urlTextField.text,
               let url = URL(string: urlText),
@@ -86,7 +86,7 @@ class AddBookmarkTableViewController: UITableViewController, UITextViewDelegate,
               let tags = tagsTextField.text?.components(separatedBy: " ") else {
             return
         }
-        
+
         if Reachability.isConnectedToNetwork() == false {
             alertError(title: "Couldn't Add Bookmark", message: "Try again when you're back online.")
         } else {
@@ -100,9 +100,9 @@ class AddBookmarkTableViewController: UITableViewController, UITextViewDelegate,
             }
         }
     }
-    
-    //MARK: - Functions
-    
+
+    // MARK: - Functions
+
     func checkValidBookmark() {
         let url = urlTextField.text ?? ""
         let title = titleTextField.text ?? ""
@@ -112,11 +112,11 @@ class AddBookmarkTableViewController: UITableViewController, UITextViewDelegate,
             addButton.isEnabled = false
         }
     }
-    
+
     @objc private func textFieldDidChange(textField: UITextField) {
         checkValidBookmark()
     }
-    
+
     func textViewDidChange(_ textView: UITextView) {
         if descriptionTextView.text.isEmpty {
             descriptionTextView.backgroundColor = nil
@@ -124,7 +124,7 @@ class AddBookmarkTableViewController: UITableViewController, UITextViewDelegate,
             descriptionTextView.backgroundColor = .white
         }
     }
-    
+
     @IBAction func dismissAddBookmark(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

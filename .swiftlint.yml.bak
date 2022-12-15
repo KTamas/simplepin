@@ -1,0 +1,9 @@
+disabled_rules:
+  - trailing_whitespace
+  - comment_spacing
+  - mark
+  - line_length
+  - identifier_name
+  - vertical_whitespace
+  - switch_case_alignment
+  - file_length

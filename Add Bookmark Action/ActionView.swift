@@ -20,7 +20,7 @@ struct Bookmark {
     var tags: String
     var personal: Bool
     var toread: Bool
-    
+
     init() {
         self.url = NSURL()
         self.description = ""
@@ -33,22 +33,21 @@ struct Bookmark {
 struct ActionView: View {
     @Environment(\.extensionContext) private var extensionContext: NSExtensionContext!
     @Environment(\.managedObjectContext) private var managedObjectContext
-    
-    
+
     //    @AppStorage(WFDefaults.defaultFontIntegerKey, store: UserDefaults.shared) var fontIndex: Int = 0
-    
+
     //    @FetchRequest(
     //        entity: WFACollection.entity(),
     //        sortDescriptors: [NSSortDescriptor(keyPath: \WFACollection.title, ascending: true)]
     //    ) var collections: FetchedResults<WFACollection>
-    
+
     @State private var url: String = ""
     @State private var title: String = ""
     @State private var description: String = ""
     @State private var tags: String = ""
     @State private var isPrivate: Bool = false
     @State private var isReadLater: Bool = false
-    
+
     private var controls: some View {
         HStack {
             Group {
@@ -70,7 +69,7 @@ struct ActionView: View {
             .padding()
         }
     }
-    
+
     var body: some View {
         VStack {
             controls
@@ -121,12 +120,12 @@ struct ActionView: View {
     //            }
     //        }
     //    }
-    
-    func addBookmark(url: String, title: String, shared: Bool, description: String = "", tags: String, toread: Bool = false) -> Void {
+
+    func addBookmark(url: String, title: String, shared: Bool, description: String = "", tags: String, toread: Bool = false) {
         let groupDefaults = UserDefaults(suiteName: "group.ml.simplepinkt")!
         let userToken = groupDefaults.string(forKey: "userToken")! as String
         let shared = !shared
-        
+
         var urlQuery = URLComponents()
         urlQuery.scheme = "https"
         urlQuery.host = "api.pinboard.in"
@@ -139,10 +138,10 @@ struct ActionView: View {
             URLQueryItem(name: "shared", value: String(shared)),
             URLQueryItem(name: "toread", value: String(toread)),
             URLQueryItem(name: "auth_token", value: userToken),
-            URLQueryItem(name: "format", value: "json"),
+            URLQueryItem(name: "format", value: "json")
         ]
-        
-        let task = URLSession.shared.dataTask(with: urlQuery.url!) { data, response, error in
+
+        let task = URLSession.shared.dataTask(with: urlQuery.url!) { data, _, error in
             if let data = data {
                 let resultCode = self.parseJSON(data: data, key: "result_code")
                 if resultCode == "200" {
@@ -152,48 +151,48 @@ struct ActionView: View {
                 print("HTTP Request Failed \(error)")
             }
         }
-        
+
         task.resume()
     }
-    
+
     func parseJSON(data: Data, key: String) -> String? {
         if let jsonObject = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String: AnyObject] {
             return jsonObject["\(key)"] as? String
         }
         return nil
     }
-    
+
     //    private func savePostToCollection(title: String, body: String) {
     //        print(title)
     //        print(body)
     //        LocalStorageManager.standard.saveContext()
     //    }
-    
+
     private func getPageDataFromExtensionContext() throws {
         if let inputItem = extensionContext.inputItems.first as? NSExtensionItem {
             if let itemProvider = inputItem.attachments?.first {
-                
+
                 let typeIdentifier: String
-                
+
                 if #available(iOS 15, *) {
                     typeIdentifier = UTType.propertyList.identifier
                 } else {
                     typeIdentifier = kUTTypePropertyList as String
                 }
-                
+
                 itemProvider.loadItem(forTypeIdentifier: typeIdentifier) { (dict, error) in
                     if let error = error {
                         print("⚠️", error)
                         //                      self.isShowingAlert = true
                     }
-                    
+
                     guard let itemDict = dict as? NSDictionary else {
                         return
                     }
                     guard let jsValues = itemDict[NSExtensionJavaScriptPreprocessingResultsKey] as? NSDictionary else {
                         return
                     }
-                    
+
                     self.title = jsValues["title"] as? String ?? ""
                     self.url = jsValues["URL"] as? String ?? ""
                     self.description = jsValues["selection"] as? String ?? ""

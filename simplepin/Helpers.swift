@@ -11,8 +11,7 @@ import UIKit
 class Helpers {
     static func open(scheme: String) {
         if let url = URL(string: scheme) {
-            UIApplication.shared.open(url, options: [:], completionHandler: {
-                (success) in
+            UIApplication.shared.open(url, options: [:], completionHandler: { (success) in
                 print("Open \(scheme): \(success)")
             })
         }

@@ -1,23 +1,23 @@
 import SwiftUI
 
 class ActionViewController: UIViewController {
-    
+
     //    let moc = LocalStorageManager.standard.container.viewContext
-    
+
     override var prefersStatusBarHidden: Bool { true }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         let contentView = ActionView()
             .environment(\.extensionContext, extensionContext)
         //            .environment(\.managedObjectContext, moc)
-        
+
         view = UIHostingView(rootView: contentView)
         view.isOpaque = true
         view.backgroundColor = .systemBackground
     }
-    
+
 }
 
 ////
@@ -28,11 +28,11 @@ class ActionViewController: UIViewController {
 ////  Copyright © 2022 Mathias Lindholm. All rights reserved.
 ////
 //
-//import UIKit
-//import MobileCoreServices
-//import UniformTypeIdentifiers
+// import UIKit
+// import MobileCoreServices
+// import UniformTypeIdentifiers
 //
-//class ActionViewController: UIViewController {
+// class ActionViewController: UIViewController {
 //
 //    @IBOutlet weak var imageView: UIImageView!
 //
@@ -77,13 +77,13 @@ class ActionViewController: UIViewController {
 //        self.extensionContext!.completeRequest(returningItems: self.extensionContext!.inputItems, completionHandler: nil)
 //    }
 //
-//}
+// }
 //
-//protocol OptionsTableViewDelegate: AnyObject {
+// protocol OptionsTableViewDelegate: AnyObject {
 //    func didEnterInformation(data: Bookmark)
-//}
+// }
 //
-//class OptionsTableViewController: UITableViewController {
+// class OptionsTableViewController: UITableViewController {
 //    weak var delegate: OptionsTableViewDelegate? = nil
 //    var passedBookmark = Bookmark()
 //    let groupDefaults = UserDefaults(suiteName: "group.ml.simplepinkt")!
@@ -179,4 +179,4 @@ class ActionViewController: UIViewController {
 //    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
 //        false
 //    }
-//}
+// }

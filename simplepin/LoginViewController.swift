@@ -14,7 +14,7 @@ class LoginViewController: UIViewController {
     let notifications = NotificationCenter.default
     var fetchApiTokenTask: URLSessionTask?
     var tokenLogin = false
-    
+
     @IBOutlet var usernameField: UITextField!
     @IBOutlet var passwordField: UITextField!
     @IBOutlet var loginButton: UIButton!
@@ -22,46 +22,46 @@ class LoginViewController: UIViewController {
     @IBOutlet var stackBottomConstraint: NSLayoutConstraint!
     @IBOutlet var forgotPasswordButton: UIButton!
     @IBOutlet var loginMethodSegment: UISegmentedControl!
-    
-    //MARK: - Lifecycle
-    
+
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         usernameField.delegate = self
         passwordField.delegate = self
-        
+
         notifications.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         notifications.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         notifications.addObserver(forName: NSNotification.Name(rawValue: "handleRequestError"), object: nil, queue: nil, using: handleRequestError)
     }
-    
+
     // MARK: - Login
-    
+
     func loginFailed(title: String) {
         self.spinner.alpha = CGFloat(0.0)
         self.spinner.stopAnimating()
         self.loginButton.isEnabled = true
         self.alertErrorWithReachability(title: title, message: nil)
     }
-    
+
     // MARK: - Actions
-    
+
     @IBAction func loginButtonPressed(_ sender: Any) {
         actionLogin()
     }
-    
+
     func actionLogin() {
         loginButton.isEnabled = false
-        
+
         guard let password = passwordField.text,
               let username = usernameField.text else {
             return
         }
-        
+
         if password.isEmpty || username.isEmpty {
             loginButton.isEnabled = true
-            
+
             if tokenLogin == true {
                 if password.isEmpty {
                     self.alertError(title: "Please Enter Your API Token", message: nil)
@@ -72,10 +72,10 @@ class LoginViewController: UIViewController {
                 return
             }
         }
-        
+
         spinner.alpha = CGFloat(1.0)
         spinner.startAnimating()
-        
+
         switch tokenLogin {
         case true:
             fetchApiTokenTask = Network.loginWithApiToken(token: password) { result in
@@ -106,17 +106,17 @@ class LoginViewController: UIViewController {
             }
         }
     }
-    
+
     @IBAction func forgotPasswordButtonTapped(_ sender: Any) {
         let urlString = self.tokenLogin == true ? "https://m.pinboard.in/settings/password" : "https://m.pinboard.in/password_reset/"
         if let url = URL(string: urlString) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
-    
+
     @IBAction func loginMethodSegmentTaped(_ sender: Any) {
         passwordField.text = ""
-        
+
         switch loginMethodSegment.selectedSegmentIndex {
         case 0:
             tokenLogin = false
@@ -132,33 +132,33 @@ class LoginViewController: UIViewController {
             break
         }
     }
-    
-    //MARK: - Events
+
+    // MARK: - Events
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         usernameField.resignFirstResponder()
         passwordField.resignFirstResponder()
     }
-    
+
     @objc func keyboardWillShow(notification: Notification) {
         guard let userInfo = notification.userInfo else { return }
         let keyboardEndFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         let convertedKeyboardEndFrame = view.convert(keyboardEndFrame, from: view.window)
-        
+
         self.stackBottomConstraint.constant = view.bounds.maxY - convertedKeyboardEndFrame.minY + 8
         UIView.animate(withDuration: 0.1) {
             self.view.layoutSubviews()
         }
     }
-    
+
     @objc func keyboardWillHide(notification: Notification) {
         stackBottomConstraint.constant = 16
         UIView.animate(withDuration: 0.1) {
             self.view.layoutSubviews()
         }
     }
-    
+
     func handleRequestError(notification: Notification) {
-        if let info = notification.userInfo as? Dictionary<String, String> {
+        if let info = notification.userInfo as? [String: String] {
             guard let title = info["title"],
                   let message = info["message"] else {
                 return
@@ -166,7 +166,7 @@ class LoginViewController: UIViewController {
             alertError(title: title, message: message)
         }
     }
-    
+
     deinit {
         notifications.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         notifications.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)

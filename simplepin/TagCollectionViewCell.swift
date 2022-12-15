@@ -8,19 +8,19 @@
 
 import UIKit
 
-class TagCollectionViewCell: UICollectionViewCell  {
+class TagCollectionViewCell: UICollectionViewCell {
     @IBOutlet var tagLabel: UILabel!
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+
         guard let string = tagLabel.text else { return }
         let index = string.startIndex...string.index(string.startIndex, offsetBy: 0)
-        
+
         tagLabel.layer.masksToBounds = true
         tagLabel.layer.cornerRadius = 2
         tagLabel.layer.borderWidth = 0.5
-        
+
         if string[index] == "." {
             tagLabel.textColor = UIColor.darkGray
             tagLabel.highlightedTextColor = UIColor.darkGray

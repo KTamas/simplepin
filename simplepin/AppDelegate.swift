@@ -14,19 +14,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var storyboard: UIStoryboard?
     var navigation: UINavigationController?
-    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         migrateUserDefaultsToAppGroups()
-        
+
         self.window?.tintColor = Colors.Blue
         UINavigationBar.appearance().tintColor = Colors.Blue
         UITabBar.appearance().tintColor = Colors.Blue
-        
+
         self.storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         if defaults.string(forKey: "userToken") == nil {
             self.showLoginScreen(animated: false)
         }
-        
+
         return true
     }
     func showLoginScreen(animated: Bool) {
@@ -37,17 +37,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController?.present(vc, animated: animated, completion: nil)
         }
     }
-    
+
     func logOut() {
         let appDomain = Bundle.main.bundleIdentifier!
         let root = self.window?.rootViewController as! UINavigationController
-        
+
         if let vc = root.topViewController as? BookmarksTableViewController {
             vc.bookmarksArray.removeAll()
             vc.filteredBookmarks.removeAll()
             vc.tableView.reloadData()
         }
-        
+
         UserDefaults.standard.removePersistentDomain(forName: appDomain)
         for key in defaults.dictionaryRepresentation() {
             defaults.removeObject(forKey: key.0)
@@ -56,9 +56,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-enum UIUserInterfaceIdiom : Int {
+enum UIUserInterfaceIdiom: Int {
     case Unspecified
-    
+
     case Phone // iPhone and iPod touch style UI
     case Pad // iPad style UI
 }
