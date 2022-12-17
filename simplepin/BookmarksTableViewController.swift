@@ -278,6 +278,8 @@ class BookmarksTableViewController: UITableViewController, UISearchBarDelegate, 
         }
 
         cell.titleLabel.text = bookmark.title
+        
+        cell.URLLabel.text = bookmark.url.absoluteString
 
         if defaults.bool(forKey: "relativeDate") == true {
             cell.dateLabel.text = bookmark.date.timeAgo()

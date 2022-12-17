@@ -12,6 +12,7 @@ class BookmarkTableViewCell: UITableViewCell {
     let defaults = UserDefaults(suiteName: "group.ml.simplepinkt")!
 
     @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var URLLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var unreadIndicator: UIImageView!
