@@ -9,6 +9,12 @@
 import Foundation
 
 extension Date {
+    var dateToString: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        return formatter.string(from: self)
+    }
+
     func timeAgo() -> String {
         let formatter = RelativeDateTimeFormatter()
         formatter.unitsStyle = .full

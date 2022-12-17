@@ -10,7 +10,7 @@
 		4A0B5780294533CC003B97E3 /* UniformTypeIdentifiers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A0B577F294533CB003B97E3 /* UniformTypeIdentifiers.framework */; };
 		4A0B5783294533CC003B97E3 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A0B5782294533CC003B97E3 /* Media.xcassets */; };
 		4A0B5785294533CC003B97E3 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B5784294533CC003B97E3 /* ActionViewController.swift */; };
-		4A0B578C294533CC003B97E3 /* Add Bookmark Action.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4A0B577D294533CB003B97E3 /* Add Bookmark Action.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4A0B578C294533CC003B97E3 /* Add Bookmark Action.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 4A0B577D294533CB003B97E3 /* Add Bookmark Action.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4A0B5792294536AA003B97E3 /* ActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B5791294536AA003B97E3 /* ActionView.swift */; };
 		4A0B57972945385A003B97E3 /* EnvironmentValues+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B57962945385A003B97E3 /* EnvironmentValues+Extensions.swift */; };
 		4A0B57982945385A003B97E3 /* EnvironmentValues+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B57962945385A003B97E3 /* EnvironmentValues+Extensions.swift */; };
@@ -23,7 +23,7 @@
 		4AA5D4511D369A4100FC4735 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA5D4501D369A4100FC4735 /* Global.swift */; };
 		4ABD20AC1D2AE99D000190DE /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABD20AB1D2AE99D000190DE /* ShareViewController.swift */; };
 		4ABD20AF1D2AE99D000190DE /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ABD20AD1D2AE99D000190DE /* MainInterface.storyboard */; };
-		4ABD20B31D2AE99D000190DE /* Add Bookmark.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4ABD20A91D2AE99D000190DE /* Add Bookmark.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4ABD20B31D2AE99D000190DE /* Add Bookmark.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 4ABD20A91D2AE99D000190DE /* Add Bookmark.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4ACF3E141CFF5B620006A587 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACF3E131CFF5B620006A587 /* TagCollectionViewCell.swift */; };
 		8C4A5D67241FAA8400CDF027 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4A5D66241FAA8400CDF027 /* Helpers.swift */; };
 		CC1E531B1CB80A20002532FB /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1E531A1CB80A20002532FB /* UIViewControllerExtension.swift */; };
@@ -63,16 +63,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		4ABD20B71D2AE99D000190DE /* Embed App Extensions */ = {
+		4ABD20B71D2AE99D000190DE /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				4A0B578C294533CC003B97E3 /* Add Bookmark Action.appex in Embed App Extensions */,
-				4ABD20B31D2AE99D000190DE /* Add Bookmark.appex in Embed App Extensions */,
+				4A0B578C294533CC003B97E3 /* Add Bookmark Action.appex in Embed Foundation Extensions */,
+				4ABD20B31D2AE99D000190DE /* Add Bookmark.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -289,7 +289,7 @@
 				CCAC5E511C84A8A1006BA336 /* Sources */,
 				CCAC5E521C84A8A1006BA336 /* Frameworks */,
 				CCAC5E531C84A8A1006BA336 /* Resources */,
-				4ABD20B71D2AE99D000190DE /* Embed App Extensions */,
+				4ABD20B71D2AE99D000190DE /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -309,7 +309,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1410;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1420;
 				ORGANIZATIONNAME = "Mathias Lindholm";
 				TargetAttributes = {
 					4A0B577C294533CB003B97E3 = {
@@ -629,6 +629,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -685,6 +686,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
